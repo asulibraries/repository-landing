@@ -7,53 +7,198 @@
     <meta name="HandheldFriendly" content="true"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-    <link rel="icon" href="/img/favicon.ico" type="image/vnd.microsoft.icon"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="icon" href="/theme/asu/img/favicon/favicon.ico" type="image/vnd.microsoft.icon"/>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
     <link rel="stylesheet" media="all" href="//use.fontawesome.com/releases/v5.13.0/css/all.css"/>
+    <link href="/theme/asu/css/unity-bootstrap-theme.bundle.css" rel="stylesheet">
     <link href="/style/style.css" rel="stylesheet">
-    <link href="/style/asu-header-footer.css" rel="stylesheet">
+    <!-- <link href="/style/asu-header-footer.css" rel="stylesheet"> -->
     <link rel="canonical" href="https://repository.lib.asu.edu/"/>
     <link rel="shortlink" href="https://repository.lib.asu.edu/"/>
   </head>
   <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <div class="container-xl">
-      <div class="row">
-        <div id="header-main" class="col-12">
-          <nav aria-label="Main" role="navigation" id="block-mainnavigation" class="navigation menu--main navbar navbar-expand-xl">
-            <a href="/" title="Home" rel="home" class="navbar-brand">
-              <img class="vert" src="/img/arizona-state-university-logo-vertical.png" alt="Arizona State University">
-              <img class="horiz" src="/img/arizona-state-university-logo.png" alt="Arizona State University">
-            </a>
-            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
-              <span title="Open mobile menu" class="fa fa-bars"></span>
-              <span title="Close mobile menu" class="fa-stack">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-times fa-stack-1x"></i>
-              </span>
-            </button>
-            <div class="navbar-container">
-              <div class="title">
-                <a href="https://lib.asu.edu" class="unit-name">ASU Library</a>
-                <a href="/" class="subdomain-name">Repository Services</a>
-              </div>
-              <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar" style>
-                <div class="navbar-nav">
-                  <h2 class="sr-only" id="block-mainnavigation-menu">Main navigation</h2>
-                  <a class="nav-link-home nav-link active" href="/" tabindex="0">
-                    <span class="d-xl-none">Home</span>
-                    <span title="Home" class="fas fa-fw fa-home"></span>
-                  </a>
-                  <a href="https://keep.lib.asu.edu" class="nav-link" id="keep-submenu-3" tabindex="0">KEEP</a>
-                  <a href="https://prism.lib.asu.edu" class="nav-link" id="prism-submenu-4" tabindex="0">PRISM</a>
-                  <a href="https://dataverse.asu.edu" class="nav-link" id="asu-research-data-repository-submenu-5" tabindex="0">ASU Research Data Repository</a>
-                </div>
-              </div>
-            </div>
-          </nav>
+    <script src="/theme/asu/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <header id="asu-header" class="fixed-top" data-elastic-exclude="data-elastic-exclude">
+    <div id="wrapper-header-top">
+      <div class="container-xl">
+        <div class="row">
+          <div id="header-top" class="col-12">
+            <nav class="nav" aria-label="ASU">
+              <a
+                class="nav-link visually-hidden-focusable"
+                href="#skip-to-content"
+              >
+                Skip to main content
+              </a>
+              <a
+                class="nav-link visually-hidden-focusable"
+                href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
+              >
+                Report an accessibility problem
+              </a>
+              <a
+                class="nav-link"
+                href="https://asu.edu"
+                data-ga-header-section="topbar"
+                data-ga-header="asu home"
+              >
+                ASU Home
+              </a>
+              <a
+                class="nav-link"
+                href="https://my.asu.edu"
+                data-ga-header-section="topbar"
+                data-ga-header="my asu"
+              >
+                My ASU
+              </a>
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/academics/colleges-schools"
+                data-ga-header-section="topbar"
+                data-ga-header="colleges and schools"
+              >
+                Colleges and Schools
+              </a>
+              <form
+                class="form-inline"
+                action="https://search.asu.edu/search"
+                method="get"
+                name="gs"
+              >
+                <input
+                  class="form-control"
+                  type="search"
+                  name="q"
+                  aria-labelledby="header-top-search"
+                  required=""
+                  data-ga-input-header-event="search"
+                />
+                <label id="header-top-search">Search asu.edu</label>
+                <input name="site" type="hidden" value="default_collection" />
+                <input name="sort" type="hidden" value="date:D:L:d1" />
+                <input name="output" type="hidden" value="xml_no_dtd" />
+                <input name="ie" type="hidden" value="UTF-8" />
+                <input name="oe" type="hidden" value="UTF-8" />
+                <input name="client" type="hidden" value="asu_frontend" />
+                <input
+                  name="proxystylesheet"
+                  type="hidden"
+                  value="asu_frontend"
+                />
+              </form>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
+    <div id="wrapper-header-main">
+      <div class="container-xl">
+        <div class="row">
+          <div id="header-main" class="col-12">
+            <div class="navbar navbar-expand-xl">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#" data-ga-header="asu logo">
+                  <img class="vert" src="/theme/asu/img/asu-logo/arizona-state-university-logo-vertical.png" alt="Arizona State University" width="303" height="234" decoding="async" fetchpriority="high"/>
+                  <img class="horiz" src="/theme/asu/img/asu-logo/arizona-state-university-logo.png" alt="Arizona State University" width="400" height="72" decoding="async" fetchpriority="high"/>
+                </a>
+                <button
+                  class="navbar-toggler collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#menubar"
+                  aria-controls="menubar"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                  data-ga-header-event="collapse"
+                  data-ga-header-type="click"
+                  data-ga-header="menu button label"
+                >
+                  <span title="Open mobile menu" class="fa fa-bars" alt=""></span>
+                  <span title="Close mobile menu" class="fa-stack">
+                    <i class="fa fa-circle fa-stack-2x" alt=""></i>
+                    <i class="fa fa-times fa-stack-1x" alt=""></i>
+                  </span>
+                </button>
+                <div class="navbar-container">
+                  <div class="title subdomain-name" data-ga-header="Repository Services">
+                    <a href="https://lib.asu.edu" class="unit-name">ASU Library</a>
+                    <span class="subdomain-name">Repository Services</span>
+                  </div>
+                  <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar">
+                    <div class="header-content-container">
+                      <nav class="navbar-nav" aria-label="Main">
+                        <a class="nav-link nav-link-home active" href="/" data-ga-header="home button" title="Repository Services home page">
+                          <span class="d-xl-none" title="Repository Services home page">Home</span>
+                          <span title="Repository Services home page" class="fas fa-fw fa-home" alt=""></span>
+                        </a>
+                        <a class="nav-link" href="https://keep.lib.asu.edu" data-ga-header="KEEP">
+                          KEEP
+                        </a>
+                        <a class="nav-link" href="https://prism.lib.asu.edu" data-ga-header="PRISM">
+                          PRISM
+                        </a>
+                        <a class="nav-link" href="https://dataverse.asu.edu" data-ga-header="ASU Research Data Repository">
+                          ASU Research Data Repository
+                        </a>
+                        </div>
+                      </nav>
+                      <div class="navbar-mobile-footer pinned">
+                        <form action="https://search.asu.edu/search" class="form-inline navbar-mobile-search" method="get" name="gs">
+                          <input aria-label="Search" class="form-control" name="q" placeholder="Search asu.edu" type="search">
+                          <input name="site" type="hidden" value="default_collection">
+                          <input name="sort" type="hidden" value="date:D:L:d1">
+                          <input name="output" type="hidden" value="xml_no_dtd">
+                          <input name="ie" type="hidden" value="UTF-8">
+                          <input name="oe" type="hidden" value="UTF-8">
+                          <input name="client" type="hidden" value="asu_frontend">
+                          <input name="proxystylesheet" type="hidden" value="asu_frontend">
+                          <input name="url_host" value="repository.lib.asu.edu" type="hidden" />
+                        </form>
+                        <div class="nav-grid">
+                          <a
+                            class="nav-link"
+                            href="https://asu.edu"
+                            data-ga-header-section="topbar"
+                            data-ga-header="asu home"
+                          >
+                            ASU Home
+                          </a>
+                          <a
+                            class="nav-link"
+                            href="https://my.asu.edu"
+                            data-ga-header-section="topbar"
+                            data-ga-header="my asu"
+                          >
+                            My ASU
+                          </a>
+                          <a
+                            class="nav-link"
+                            href="https://www.asu.edu/academics/colleges-schools"
+                            data-ga-header-section="topbar"
+                            data-ga-header="colleges and schools"
+                          >
+                            Colleges and Schools
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="wrapper" id="page-wrapper">
+    <div
+      id="skip-to-content"
+      class="visually-hidden"
+      data-elastic-exclude="data-elastic-exclude"
+    ></div>
+  </div>
     <div class="container">
       <h2>Welcome</h2>
 
@@ -125,132 +270,256 @@
         </div>
       </div>
     </div>
-    <section class="region region-footer-fifth">
-      <div id="block-asulibraryfooterblock" class="block block-asu-brand block-asu-lib-footer-block">
-        <div class="content">
-          <div class="wrapper" id="wrapper-endorsed-footer">
-            <div class="container" id="endorsed-footer">
-              <div class="row">
-                <div class="col-md" id="endorsed-logo">
-                  <img src="https://repository.lib.asu.edu/themes/custom/asulib_barrio/images/library_footer_logo_white.png" alt="ASU University Technology Office Arizona State University.">
+    <footer id="asu-footer" role="contentinfo" data-elastic-exclude="data-elastic-exclude">
+  <div class="wrapper" id="wrapper-endorsed-footer">
+    <div class="container" id="endorsed-footer">
+      <div class="row">
+        <div class="col-md" id="endorsed-logo">
+          <img src="https://repository.lib.asu.edu/themes/custom/asulib_barrio/images/library_footer_logo_white.png" alt="ASU University Technology Office Arizona State University.">
+        </div>
+        <div class="col-md" id="social-media">
+          <nav class="nav" aria-label="Social Media">
+            <a
+              class="nav-link"
+              href="http://www.facebook.com/ASULibraries"
+              data-ga-footer-type="external link"
+              data-ga-footer-section="primary footer"
+              data-ga-footer="facebook icon"
+            >
+              <span
+                title="Facebook Social Media Icon"
+                class="fab fa-facebook-square"
+              ></span>
+            </a>
+            <a
+              class="nav-link"
+              href="http://twitter.com/ASUlibraries"
+              data-ga-footer-type="external link"
+              data-ga-footer-section="primary footer"
+              data-ga-footer="twitter icon"
+            >
+              <span
+                title="Twitter Social Media Icon"
+                class="fab fa-twitter-square"
+              ></span>
+            </a>
+            <a
+              class="nav-link"
+              href="http://instagram.com/ASULibraries/"
+              data-ga-footer-type="external link"
+              data-ga-footer-section="primary footer"
+              data-ga-footer="instagram icon"
+            >
+              <span
+                title="Instagram Social Media Icon"
+                class="fab fa-instagram-square"
+              ></span>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper" id="wrapper-footer-columns">
+    <nav aria-label="Footer">
+      <div class="container" id="footer-columns">
+        <div class="row">
+          <div class="col-xl" id="info-column">
+            <div class="h5">
+              Repository Services
+            </div>
+            <p class="contact-link"><a href="/contact">Contact Us</a></p>
+          </div>
+          <div class="col-xl flex-footer">
+            <div class="card accordion-item desktop-disable-xl">
+              <div class="accordion-header">
+                <div class="h5">
+                  <a id="footlink-header-two" class="collapsed" data-bs-toggle="collapse"
+                    href="#footlink-two" role="button"
+                    aria-expanded="false" aria-controls="footlink-two"
+                  >
+                    Repository Services
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
                 </div>
-
-                <div class="col-md" id="social-media">
-                  <nav class="nav" aria-label="Social Media">
-                    <a class="nav-link" href="http://www.facebook.com/ASULibraries" title="ASU Library Facebook">
-                      <i class="fab fa-facebook-square"></i>
-                    </a>
-                    <a class="nav-link" href="http://twitter.com/ASUlibraries" title="ASU Library Twitter">
-                      <i class="fab fa-twitter-square" title="ASU Library Twitter"></i>
-                    </a>
-                    <a class="nav-link" href="http://instagram.com/ASULibraries/" title="ASU Library Instagram">
-                      <i class="fab fa-instagram-square"></i>
-                    </a>
-                  </nav>
-                </div>
-
+              </div>
+              <div
+                id="footlink-two"
+                class="collapse accordion-body"
+                aria-labelledby="footlink-header-two"
+              >
+                <a class="nav-link" href="/" title="link">
+                  Home
+                </a>
+                <a class="nav-link" href="https://keep.lib.asu.edu" title="link">
+                  KEEP
+                </a>
+                <a class="nav-link" href="https://prism.lib.asu.edu" title="link">
+                  PRISM
+                </a>
+                <a class="nav-link" href="https://dataverse.lib.asu.edu" title="link">
+                  ASU Research Data Repository
+                </a>
               </div>
             </div>
           </div>
-          <div class="wrapper" id="wrapper-footer-columns">
-            <nav aria-label="Footer">
-              <div class="container" id="footer-columns">
-                <div class="row">
-                  <div class="col-xl-3" id="info-column">
-                    <h5>Repository Services</h5>
-                    <p class="contact-link">
-                      <a href="/contact">Contact Us</a>
-                    </p>
-                  </div>
-                  <div class="col-xl flex-footer">
-                    <div class="card card-foldable desktop-disable-xl">
-                      <div class="card-header">
-                        <h5>
-                          <a id="footlink-header-two" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Repository Services
-                            <i class="fas fa-chevron-up"></i>
-                          </a>
-                        </h5>
-                      </div>
-                      <div id="footlink-two" class="collapse card-body show" aria-labelledby="footlink-header-two">
-                        <a class="nav-link" href="https://repository.lib.asu.edu" title="Repository Services Home">Home</a>
-                        <a class="nav-link" href="https://keep.lib.asu.edu" title="KEEP">KEEP</a>
-                        <a class="nav-link" href="https://prism.lib.asu.edu" title="PRISM">PRISM</a>
-                        <a class="nav-link" href="https://dataverse.asu.edu" title="ASU Research Data Repository">ASU Research Data Repository</a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-xl flex-footer">
-                    <div class="card card-foldable desktop-disable-xl">
-                      <div class="card-header">
-                        <h5>
-                          <a id="footlink-header-two" data-toggle="collapse" href="#footlink-two" role="button" aria-expanded="false" aria-controls="footlink-two">Resources
-                            <i class="fas fa-chevron-up"></i>
-                          </a>
-                        </h5>
-                      </div>
-                      <div id="footlink-two" class="collapse card-body show" aria-labelledby="footlink-header-two">
-                        <a class="nav-link" href="https://keep.lib.asu.edu/about/termsofdeposit" title="Terms of Deposit">Terms of Deposit</a>
-                        <a class="nav-link" href="https://libguides.asu.edu/digitalrepository/home" title="ASU Digital Repository Guide">Sharing Materials: ASU Digital Repository Guide</a>
-                        <a class="nav-link" href="http://libguides.asu.edu/openaccess" title="Open Access at ASU">Open Access at ASU</a>
-                      </div>
-                    </div>
-                  </div>
-
+          <div class="col-xl flex-footer">
+            <div class="card accordion-item desktop-disable-xl">
+              <div class="accordion-header">
+                <div class="h5">
+                  <a
+                    id="footlink-header-three" class="collapsed" data-bs-toggle="collapse"
+                    href="#footlink-three" role="button"
+                    aria-expanded="false" aria-controls="footlink-three"
+                  >
+                    Resources
+                    <span class="fas fa-chevron-up"></span>
+                  </a>
                 </div>
               </div>
+              <div id="footlink-three" class="collapse accordion-body" aria-labelledby="footlink-header-three">
+              <a class="nav-link" href="https://keep.lib.asu.edu/about/termsofdeposit" title="Terms of Deposit">Terms of Deposit</a>
+              <a class="nav-link" href="https://libguides.asu.edu/digitalrepository/home" title="ASU Digital Repository Guide">Sharing Materials: ASU Digital Repository Guide</a>
+              <a class="nav-link" href="http://libguides.asu.edu/openaccess" title="Open Access at ASU">Open Access at ASU</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="wrapper" id="wrapper-footer-innovation">
+    <div class="container" id="footer-innovation">
+      <div class="row">
+        <div class="col">
+          <div class="d-flex footer-innovation-links">
+            <nav class="nav" aria-label="University Services">
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/locations-maps"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="maps and locations"
+              >
+                Maps and Locations
+              </a>
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/asujobs"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="jobs"
+              >
+                Jobs
+              </a>
+              <a
+                class="nav-link"
+                href="https://isearch.asu.edu/"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="directory"
+              >
+                Directory
+              </a>
+              <a
+                class="nav-link"
+                href="https://www.asu.edu/about/contact"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="contact asu"
+              >
+                Contact ASU
+              </a>
+              <a
+                class="nav-link"
+                href="https://my.asu.edu/"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="secondary footer"
+                data-ga-footer="my asu"
+              >
+                My ASU
+              </a>
             </nav>
-          </div>
-          <div class="wrapper" id="wrapper-footer-land-ack">
-            <div class="container">
-              <div class="row">
-                <div class="col-md">
-                  <p>The ASU Library acknowledges the twenty-two Native Nations that have inhabited this land for centuries. Arizona State University's four campuses are located in the Salt River Valley on ancestral territories of Indigenous peoples, including the Akimel O’odham (Pima) and Pee Posh (Maricopa) Indian Communities, whose care and keeping of these lands allows us to be here today. ASU Library acknowledges the sovereignty of these nations and seeks to foster an environment of success and possibility for Native American students and patrons. We are advocates for the incorporation of Indigenous knowledge systems and research methodologies within contemporary library practice. ASU Library welcomes members of the Akimel O’odham and Pee Posh, and all Native nations to the Library.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="block-asuuniversalfooter" class="block block-asu-header block-asu-global-footer">
-        <div class="content">
-          <div class="wrapper" id="wrapper-footer-innovation">
-            <div class="container" id="footer-innovation">
-              <div class="row">
-                <div class="col">
-                  <div class="d-flex footer-innovation-links">
-                    <img src="/img/200420-GlobalFooter-No1InnovationLockup.png" alt="Number one in the U.S. for innovation. ASU ahead of MIT and Stanford. - U.S. News and World Report, 8 years, 2016-2023">
-                    <nav class="nav" aria-label="University Services">
-                      <a class="nav-link" href="https://www.asu.edu/about/locations-maps">Maps and Locations</a>
-                      <a class="nav-link" href="https://www.asu.edu/asujobs">Jobs</a>
-                      <a class="nav-link" href="https://isearch.asu.edu/">Directory</a>
-                      <a class="nav-link" href="https://www.asu.edu/about/contact">Contact ASU</a>
-                      <a class="nav-link" href="https://my.asu.edu/">My ASU</a>
-                    </nav>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="wrapper" id="wrapper-footer-colophon">
-            <div class="container" id="footer-colophon">
-              <div class="row">
-                <div class="col">
-                  <nav class="nav colophon" aria-label="University Legal and Compliance">
-                    <a class="nav-link" href="https://www.asu.edu/about/copyright-trademark">Copyright and Trademark</a>
-                    <a class="nav-link" href="https://www.asu.edu/accessibility/">Accessibility</a>
-                    <a class="nav-link" href="https://www.asu.edu/about/privacy">Privacy</a>
-                    <a class="nav-link" href="https://www.asu.edu/about/terms-of-use">Terms of Use</a>
-                    <a class="nav-link" href="https://www.asu.edu/emergency/">Emergency</a>
-                    <a class="nav-link" href="https://eoss.asu.edu/health/announcements/coronavirus">COVID-19 Information</a>
-                  </nav>
-                </div>
-              </div>
-            </div>
+            <a
+              class="img-link"
+              href="https://www.asu.edu/rankings"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="secondary footer"
+              data-ga-footer="#1 in the u.s. for innovation"
+            >
+              <img
+                src="/theme/asu/img/innovation-lockup/on-gold/200420-GlobalFooter-No1InnovationLockup.png"
+                alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
+                width="459"
+                height="100"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+  <div class="wrapper" id="wrapper-footer-colophon">
+    <div class="container" id="footer-colophon">
+      <div class="row">
+        <div class="col">
+          <nav
+            class="nav colophon"
+            aria-label="University Legal and Compliance"
+          >
+            <a
+              class="nav-link"
+              href="https://www.asu.edu/about/copyright-trademark"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="tertiary footer"
+              data-ga-footer="copyright and trademark"
+            >
+              Copyright and Trademark
+            </a>
+            <a
+              class="nav-link"
+              href="https://www.asu.edu/accessibility/"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="tertiary footer"
+              data-ga-footer="accessibility"
+            >
+              Accessibility
+            </a>
+            <a
+              class="nav-link"
+              href="https://www.asu.edu/about/privacy"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="tertiary footer"
+              data-ga-footer="privacy"
+            >
+              Privacy
+            </a>
+            <a
+              class="nav-link"
+              href="https://www.asu.edu/about/terms-of-use"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="tertiary footer"
+              data-ga-footer="terms of use"
+            >
+              Terms of Use
+            </a>
+            <a
+              class="nav-link"
+              href="https://www.asu.edu/emergency/"
+              data-ga-footer-type="internal link"
+              data-ga-footer-section="tertiary footer"
+              data-ga-footer="emergency"
+            >
+              Emergency
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+    <script src="/theme/asu/js/global-header.js" crossorigin="anonymous"></script>
   </body>
 </html>
