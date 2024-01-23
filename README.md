@@ -17,4 +17,9 @@ Most of this could be done with a static HTML site with some JavaScript; the exc
 The redirects are stored in a sqlite3 database file, `redirects.db`, with the schema `CREATE TABLE redirects (source TEXT PRIMARY KEY, target TEXT NOT NULL);`.
 The `source` column stores a the requests' path *without* the leading `/`. The `target` column stores the full target URL.
 
-To load the database manually, install sqlite3, and then run the command `sqlite3 redirects.db < load-redirects.sql`. Building the docker image will do this automatically.
+Building the docker image will do this automatically.
+To load the database manually, install sqlite3, and then run the command `sqlite3 redirects.db < load-redirects.sql`.
+
+# Building
+
+The site requires ASU's [unity-bootstrap5 theme library](https://unity.web.asu.edu/@asu/unity-bootstrap-theme/index.html?path=/story/get-started-get-started--page) which is in a private repository.

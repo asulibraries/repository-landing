@@ -8,6 +8,7 @@ WORKDIR /app
 COPY public public
 COPY src src
 COPY package.json .
+ARG NPM_TOKEN
 COPY .npmrc .
 RUN npm i
 COPY tsconfig.json .
