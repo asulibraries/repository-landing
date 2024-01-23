@@ -1,4 +1,3 @@
-.npmrc
 redirects.db*
 dist
 node_modules
