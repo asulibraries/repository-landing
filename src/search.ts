@@ -12,61 +12,58 @@ enum SearchStatus {
     COMPLETE = 'completed'
 }
 
-interface SearchConstructor {
-    new (query: string): Search;
-}
-
-interface Search {
-    status: SearchStatus,
-    count?: number,
-    results?: Array<Result>;
-}
-
-
-class KeepSearch implements Search {
-    baseUrl = 'https://keep.lib.asu.edu/api/search'
+class Search {
+    host = '';
+    query = '';
     status = SearchStatus.INIT;
     count = 0;
     results = [];
-    constructor(query: string) {
-        // Drupal request code
-        // e.g. https://keep.lib.asu.edu/api/search?search_api_fulltext=Urban+Planning&format=json&items_per_page=10
-    //     $request_url = $base_url . '?search_api_fulltext=' . $term . '&q=' . $term .
-    //     '&format=json' . (($limit > 10) ? "items_per_page=" . $limit : "");
-    //   $request = $this->httpClient->request('GET', $request_url);
-
-        // Proof-of-concept test results:
-        this.results = [
-            { title: 'title', url: 'https://example.net', abstract: 'This is an abstract', created: '2024' },
-            { title: 'title', url: 'https://example.net', abstract: 'This is an abstract', created: '2024' }];
-        this.status = SearchStatus.COMPLETE;
+    constructor(host: string, query: string) {
+        this.query = query;
+        this.host = host;
     }
 }
 
+import axios from 'axios';
 
-class PrismSearch implements Search {
-    status = SearchStatus.INIT;
-    count = 0;
-    constructor(query: string) {
-        throw new Error("Method not implemented.");
-    }
+async function getDrupalApiPromise(search: Search): Promise<Search | void> {
+    const completed_search = await axios.get(search.host + '/api/search', {
+        params: {
+            search_api_fulltext: search.query,
+            format: 'json',
+            items_per_page: 10
+        }
+    })
+        .then(function (response) {
+            search.status = SearchStatus.TRANSFORMING;
+            if (response.data.search_results) {
+                search.results = response.data.search_results.map((result) => (Object.assign(new Result(), {
+                    title: result.complex_title || "[Untitled]",
+                    url: result.field_handle || `${this.host}/node/${result.nid}`,
+                    abstract: result.field_rich_description || "",
+                    created: result.field_edtf_date_created || ""
+                }
+                )));
+            }
+            search.count = response.data.pager?.count ?? 0;
+            return search;
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        .finally(function () {
+            search.status = SearchStatus.COMPLETE;
+        });
+    return completed_search;
 }
 
-class DataverseSearch implements Search {
-    status = SearchStatus.INIT;
-    count = 0;
-    constructor(query: string) {
-        throw new Error("Method not implemented.");
-    }
-}
 
-type SearchFunction = (a: string) => Array<Search>;
-export function search(repo: string, query: string): Search  {
+export async function search(repo: string, query: string): Promise<Search | void> {
+    let search = undefined;
     switch (repo) {
-        case 'keep': return new KeepSearch(query);
-        case 'prism': return new PrismSearch(query);
-        case 'dataverse': return new DataverseSearch(query);
+        case 'keep': return getDrupalApiPromise(new Search('https://keep.lib.asu.edu', query));
+        case 'prism': return getDrupalApiPromise(new Search('https://prism.lib.asu.edu', query));
+        // case 'dataverse': search = new DataverseSearch(query); break;
     }
-    return null;
-    
+    return search;
 };

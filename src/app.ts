@@ -14,22 +14,23 @@ app.use(express.static("./public"));
 app.use("/theme/asu", express.static("./node_modules/@asu/unity-bootstrap-theme/dist/"));
 
 app.get("/search/:repo", (req: Request, res: Response) => {
-  
-  if (!req.query.q){
-    console.log("No search term provided.", req.query );
+
+  if (!req.query.q) {
+    console.log("No search term provided.", req.query);
     res.send("");
     return;
   }
-  
-  let search = Search.search(req.params['repo'], String(req.query['q']));
-  if (!search) {
-    console.log(`No ${req.params['repo']} search available.`);
-    res.send("");
-    return;
-  }
-  
-  res.render('search-results', {
-    'repo': req.params['repo'], 'count': search.count, 'results': search.results
+
+  Search.search(req.params['repo'], String(req.query['q']))
+  .then((search) => {
+    if (!search) {
+      console.log(`No ${req.params['repo']} search available.`);
+      res.send("");
+      return;
+    }
+    res.render('search-results', {
+      'repo': req.params['repo'], 'count': search.count, 'results': search.results
+    });
   });
 });
 

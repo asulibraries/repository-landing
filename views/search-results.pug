@@ -9,6 +9,6 @@ div(id="results-keep" class="repo col-md-6")
         div(class="bento_item")
           div(class="bento_link" title= result.title)
             a(href=result.url target="_blank")= result.title
-          p= result.abstract
+          p= result.abstract.replace(/(<([^>]+)>)/gi, "").substr(0,150) + "..."
           small.
             #[label Created] #{result.created}
