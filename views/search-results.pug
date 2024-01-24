@@ -1,0 +1,14 @@
+div(id="results-keep" class="repo col-md-6")
+  div(class="content")
+    h2= repo.toUpperCase()
+    i.
+      #{count} results found
+    br
+    div(class="bento_box")
+      each result in results
+        div(class="bento_item")
+          div(class="bento_link" title= result.title)
+            a(href=result.url target="_blank")= result.title
+          p= result.abstract
+          small.
+            #[label Created] #{result.created}

@@ -1,14 +1,37 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
+import * as Search from './search';
+import { EMPTY } from "sqlite3";
 const sqlite3 = require('sqlite3');
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 8000;
+app.set('view engine', 'pug')
 
 app.use(express.static("./public"));
 app.use("/theme/asu", express.static("./node_modules/@asu/unity-bootstrap-theme/dist/"));
+
+app.get("/search/:repo", (req: Request, res: Response) => {
+  
+  if (!req.query.q){
+    console.log("No search term provided.", req.query );
+    res.send("");
+    return;
+  }
+  
+  let search = Search.search(req.params['repo'], String(req.query['q']));
+  if (!search) {
+    console.log(`No ${req.params['repo']} search available.`);
+    res.send("");
+    return;
+  }
+  
+  res.render('search-results', {
+    'repo': req.params['repo'], 'count': search.count, 'results': search.results
+  });
+});
 
 app.get("/", (req: Request, res: Response) => {
   res.sendFile("./");
