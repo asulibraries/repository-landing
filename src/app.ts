@@ -29,7 +29,7 @@ app.get("/search/:repo", (req: Request, res: Response) => {
       return;
     }
     res.render('search-results', {
-      'repo': req.params['repo'], 'count': search.count, 'results': search.results
+      'search': search
     });
   });
 });

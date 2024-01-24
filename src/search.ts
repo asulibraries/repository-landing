@@ -13,12 +13,15 @@ enum SearchStatus {
 }
 
 class Search {
+    site_name = '';
     host = '';
     query = '';
+    all_results_url = '';
     status = SearchStatus.INIT;
     count = 0;
     results = [];
-    constructor(host: string, query: string) {
+    constructor(site: string, host: string, query: string) {
+        this.site_name = site;
         this.query = query;
         this.host = host;
     }
@@ -27,7 +30,8 @@ class Search {
 import axios from 'axios';
 
 async function getDrupalApiPromise(search: Search): Promise<Search | void> {
-    const completed_search = await axios.get(search.host + '/api/search', {
+    search.all_results_url = `${search.host}/search/?search_api_fulltext=${search.query}`;
+    return await axios.get(search.host + '/api/search', {
         params: {
             search_api_fulltext: search.query,
             format: 'json',
@@ -54,10 +58,10 @@ async function getDrupalApiPromise(search: Search): Promise<Search | void> {
         .finally(function () {
             search.status = SearchStatus.COMPLETE;
         });
-    return completed_search;
 }
 
 async function getDataverseApiPromise(search: Search): Promise<Search | void> {
+    search.all_results_url = `${search.host}/dataverse/asulibrary/?q=${search.query}`;
     return await axios.get(search.host + '/api/search', {
         params: {
             q: search.query,
@@ -78,7 +82,7 @@ async function getDataverseApiPromise(search: Search): Promise<Search | void> {
         return search;
     }).catch(function (error) {
         console.log(error);
-    }).finally(function() {
+    }).finally(function () {
         search.status = SearchStatus.COMPLETE;
     });
 }
@@ -86,9 +90,9 @@ async function getDataverseApiPromise(search: Search): Promise<Search | void> {
 export async function search(repo: string, query: string): Promise<Search | void> {
     let search = undefined;
     switch (repo) {
-        case 'keep': return getDrupalApiPromise(new Search('https://keep.lib.asu.edu', query));
-        case 'prism': return getDrupalApiPromise(new Search('https://prism.lib.asu.edu', query));
-        case 'dataverse': return getDataverseApiPromise(new Search('https://dataverse.asu.edu/', query));
+        case 'keep': return getDrupalApiPromise(new Search('KEEP', 'https://keep.lib.asu.edu', query));
+        case 'prism': return getDrupalApiPromise(new Search('PRISM', 'https://prism.lib.asu.edu', query));
+        case 'dataverse': return getDataverseApiPromise(new Search('ASU Research Data Repository', 'https://dataverse.asu.edu/', query));
     }
     return search;
 };

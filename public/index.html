@@ -150,7 +150,7 @@
     <div id="skip-to-content" class="visually-hidden" data-elastic-exclude="data-elastic-exclude"></div>
   </div>
   <div class="container repo-search">
-    <h1>Search</h1>
+    <h1 class="sr-only sr-only-focusable">Search</h1>
     <fieldset>
       <label for="search-text">Search all repositories</label>
       <input placeholder="Enter keyword(s) here" type="text" id="search-text" name="q" value="" size="80"
@@ -160,9 +160,12 @@
     </fieldset>
     <div id="search-results">
       <div class="row">
-        <div id="results-keep" hx-get="/search/keep" hx-include="#search-text" hx-trigger="click from:#search-submit"></div>
-        <div id="results-prism" hx-get="/search/prism" hx-include="#search-text" hx-trigger="click from:#search-submit"></div>
-        <div id="results-dataverse" hx-get="/search/dataverse"  hx-include="#search-text" hx-trigger="click from:#search-submit"></div>
+        <div id="results-keep" hx-get="/search/keep" hx-include="#search-text" hx-trigger="click from:#search-submit"
+          class="repo col-md-6"></div>
+        <div id="results-prism" hx-get="/search/prism" hx-include="#search-text" hx-trigger="click from:#search-submit"
+          class="repo col-md-6"></div>
+        <div id="results-dataverse" hx-get="/search/dataverse" hx-include="#search-text"
+          hx-trigger="click from:#search-submit" class="repo col-md-6"></div>
       </div>
     </div>
   </div>
