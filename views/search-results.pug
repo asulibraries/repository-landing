@@ -1,19 +1,20 @@
 div(id="results-keep")
-  div(class="content")
-    h2= search.site_name
-    i.
-      #{search.count.toLocaleString()} results found
-    br
-    div(class="bento_box")
-      each result in search.results
-        div(class="bento_item")
-          div(class="bento_link" title= result.title)
-            a(href=result.url target="_blank")= result.title
-          p= result.abstract.replace(/(<([^>]+)>)/gi, "").substr(0,150) + "..."
-          small.
-            #[label Created] #{result.created.split("T")[0]}
-    a(
-        href=search.all_results_url
-        target="_blank"
-        title= "See all " + search.site_name + " results >"
-    ) See all #{search.site_name} results >
+    div(class="content")
+        h2= search.site_name
+        i.
+            #{search.count.toLocaleString()} results found
+        br
+        div(class="bento_box")
+            each result in search.results
+                div(class="bento_item")
+                    div(class="bento_link" title= result.title)
+                        a(href=result.url target="_blank")= result.title
+                    | #{result.abstract.replace(/(<([^>]+)>)/gi, "").substr(0,150)}...
+                    br
+                    small.
+                        #[label Created: ] #{result.created.split("T")[0]}
+            a(
+                href=search.all_results_url
+                target="_blank"
+                title= "See all " + search.site_name + " results >"
+            ) See all #{search.site_name} results >
