@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Build the project
 COPY public public
+COPY views views
 COPY src src
 COPY package.json .
 ARG NPM_TOKEN
