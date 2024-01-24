@@ -57,13 +57,38 @@ async function getDrupalApiPromise(search: Search): Promise<Search | void> {
     return completed_search;
 }
 
+async function getDataverseApiPromise(search: Search): Promise<Search | void> {
+    return await axios.get(search.host + '/api/search', {
+        params: {
+            q: search.query,
+            per_page: 10
+        }
+    }).then(function (response) {
+        search.status = SearchStatus.TRANSFORMING;
+        if (response.data.data?.items) {
+            search.results = response.data.data.items.map((result) => (Object.assign(new Result(), {
+                title: result.name || "[Untitled]",
+                url: result.url || "",
+                abstract: result.description || "",
+                created: result.createdAt || ""
+            }
+            )));
+        }
+        search.count = response.data.data?.total_count ?? 0;
+        return search;
+    }).catch(function (error) {
+        console.log(error);
+    }).finally(function() {
+        search.status = SearchStatus.COMPLETE;
+    });
+}
 
 export async function search(repo: string, query: string): Promise<Search | void> {
     let search = undefined;
     switch (repo) {
         case 'keep': return getDrupalApiPromise(new Search('https://keep.lib.asu.edu', query));
         case 'prism': return getDrupalApiPromise(new Search('https://prism.lib.asu.edu', query));
-        // case 'dataverse': search = new DataverseSearch(query); break;
+        case 'dataverse': return getDataverseApiPromise(new Search('https://dataverse.asu.edu/', query));
     }
     return search;
 };
