@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import * as Search from './search';
 import { EMPTY } from "sqlite3";
 const sqlite3 = require('sqlite3');
+var path = require('path');
 
 dotenv.config();
 
@@ -22,16 +23,16 @@ app.get("/search/:repo", (req: Request, res: Response) => {
   }
 
   Search.search(req.params['repo'], String(req.query['q']))
-  .then((search) => {
-    if (!search) {
-      console.log(`No ${req.params['repo']} search available.`);
-      res.send("");
-      return;
-    }
-    res.render('search-results', {
-      'search': search
+    .then((search) => {
+      if (!search) {
+        console.log(`No ${req.params['repo']} search available.`);
+        res.send("");
+        return;
+      }
+      res.render('search-results', {
+        'search': search
+      });
     });
-  });
 });
 
 app.get("/", (req: Request, res: Response) => {
@@ -48,8 +49,15 @@ app.use((req: Request, res: Response) => {
       console.log(`Redirecting: '${fullPath}' to '${result.target}'`);
       return res.redirect(301, result.target);
     }
+
+    // Page not found.
     if (!res.headersSent) {
       console.log(`Not Found: '${fullPath}'`);
+      if (req.accepts('html')) {
+        return res
+          .status(404)
+          .sendFile('index.html', { root: path.join(__dirname, '../public'), });
+      }
       return res.sendStatus(404);
     }
   });
