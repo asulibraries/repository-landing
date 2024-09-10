@@ -52,4 +52,7 @@ docker build -t repo-landing --build-arg NPM_TOKEN=${NPM_TOKEN} .
 aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin XXXXX.dkr.ecr.us-west-2.amazonaws.com
 docker tag repo-landing:latest XXXXX.dkr.ecr.us-west-2.amazonaws.com/repo-landing:latest
 docker push XXXXX.dkr.ecr.us-west-2.amazonaws.com/repo-landing:latest
+
+# Redeploy the service with the new image on the repository landing ECS cluster
+aws ecs update-service --cluster repo-landing-prod --service repo-landing-prod-service --force-new-deployment
 ```
