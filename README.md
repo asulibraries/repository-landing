@@ -31,7 +31,12 @@ Save the token to your `.bash_rc` file as a `NPM_TOKEN` variable. This will allo
 ## Build and Run Locally
 
 ```
+# Install needed libraries. (Only needs to be run the first time.)
+npm install
+
+# Build and run.
 npm run build; npm run dev
+
 # Open browser to localhost:8000
 ```
 
@@ -40,6 +45,7 @@ npm run build; npm run dev
 ```
 docker build -t repo-landing --build-arg NPM_TOKEN=${NPM_TOKEN} .
 docker run --name repository-landing -d -p 8030:8000 repo-landing:latest
+
 # Open browser to localhost:8030
 ```
 
