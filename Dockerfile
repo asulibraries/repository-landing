@@ -1,4 +1,4 @@
-FROM node:22-alpine
+FROM node:22-alpine AS build
 RUN apk update && apk upgrade
 RUN apk add --no-cache sqlite
 
@@ -9,9 +9,7 @@ COPY public public
 COPY views views
 COPY src src
 COPY package.json .
-ARG NPM_TOKEN
-COPY .npmrc .
-RUN npm i
+RUN --mount=type=secret,id=npmrc,target=/root/.npmrc npm install
 COPY tsconfig.json .
 RUN npm run build
 

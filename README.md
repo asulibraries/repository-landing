@@ -22,9 +22,7 @@ To load the database manually, install sqlite3, and then run the command `sqlite
 
 # ASU Unity Bootstrap 5 Access
 
-The site requires ASU's [unity-bootstrap5 theme library](https://asu.github.io/asu-unity-stack/@asu/unity-bootstrap-theme/index.html?path=/docs/get-started-get-started--docs) which is in a private repository. You need to request access to the repository and then generate a GitHub token with `write:packages` permissions.
-
-Save the token to your `.bash_rc` file as a `NPM_TOKEN` variable. This will allow you to issue the `npm install` command and access the private repository. To build the docker image, add the `--build-arg NPM_TOKEN=${NPM_TOKEN}` flag to the build command.
+The site requires ASU's [unity-bootstrap5 theme library](https://asu.github.io/asu-unity-stack/@asu/unity-bootstrap-theme/index.html?path=/docs/get-started-get-started--docs) which is in a private repository. You need to request access to the repository and then generate a GitHub token with `write:packages` permissions and then login to npm: `npm login --registry=https://npm.pkg.github.com --scope=@asu` (username is your GitHub username and password is the token you just created).
 
 # Building and Deploying
 
@@ -43,7 +41,7 @@ npm run build; npm run dev
 ## Build and Run on Docker
 
 ```
-docker build -t repo-landing --build-arg NPM_TOKEN=${NPM_TOKEN} .
+docker build -t repo-landing --secret id=npmrc,src=$HOME/.npmrc .
 docker run --name repository-landing -d -p 8030:8000 repo-landing:latest
 
 # Open browser to localhost:8030
@@ -52,7 +50,7 @@ docker run --name repository-landing -d -p 8030:8000 repo-landing:latest
 ## AWS
 ```
 # WSL2 doesn't like the VPN when building, so disconnect it.
-docker build -t repo-landing --build-arg NPM_TOKEN=${NPM_TOKEN} .
+ddocker build -t repo-landing --secret id=npmrc,src=$HOME/.npmrc .
 
 # Get the AWS ECR identifier from the console.
 aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin XXXXX.dkr.ecr.us-west-2.amazonaws.com
