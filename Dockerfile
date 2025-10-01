@@ -1,4 +1,4 @@
-FROM node:22-alpine AS build
+FROM node:22-alpine
 RUN apk update && apk upgrade
 RUN apk add --no-cache sqlite
 
