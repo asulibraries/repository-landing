@@ -9,9 +9,7 @@ COPY public public
 COPY views views
 COPY src src
 COPY package.json .
-ARG NPM_TOKEN
-COPY .npmrc .
-RUN npm i
+RUN --mount=type=secret,id=npmrc,target=/root/.npmrc npm install
 COPY tsconfig.json .
 RUN npm run build
 
