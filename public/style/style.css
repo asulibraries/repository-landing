@@ -58,3 +58,12 @@
 #bento-search-form #edit-submit {
   top: 7px;
 }
+
+#wrapper-footer-land-ack {
+    background: #1e1e1e;
+    color: #fafafa;
+    font-weight: 200;
+    p {
+       padding-bottom: 25px;
+    }
+}
