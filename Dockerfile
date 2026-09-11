@@ -8,8 +8,8 @@ WORKDIR /app
 COPY public public
 COPY views views
 COPY src src
-COPY package.json .
-RUN --mount=type=secret,id=npmrc,target=/root/.npmrc npm install
+COPY package.json package-lock.json .
+RUN --mount=type=secret,id=npmrc,target=/root/.npmrc npm ci
 COPY tsconfig.json .
 RUN npm run build
 

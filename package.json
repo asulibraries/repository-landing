@@ -14,7 +14,7 @@
   "dependencies": {
     "@asu/unity-bootstrap-theme": "^1.9.2",
     "axios": "^1.18.1",
-    "csv-parse": "^5.5.3",
+    "csv-parse": "^7.0.2",
     "dotenv": "^16.0.3",
     "express": "^4.22.1",
     "pug": "^3.0.2",
@@ -26,7 +26,8 @@
     "nodemon": "^3.0.2"
   },
   "overrides": {
-    "qs": "6.15.2",
-    "ip-address": "10.1.1"
+    "qs": "6.16.0",
+    "ip-address": "10.4.0",
+    "brace-expansion": "5.0.9"
   }
 }
